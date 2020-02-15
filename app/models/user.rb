@@ -17,7 +17,7 @@
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, :password_digest, presence: true
-  # validates :password, length: { minimum: 8, allow_nil: true }
+  validates :password, length: { minimum: 8, allow_nil: true }
 
   has_many :created_lists,
            primary_key: :id,
@@ -42,4 +42,36 @@ class User < ApplicationRecord
   has_many :lists,
            through: :users_to_lists,
            source: :list
+
+  attr_reader :password
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
+  end
+
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+
+    user if user&.is_password?(password)
+  end
+
+  def ensure_session_token
+    self.session_token ||= generate_session_token
+  end
+
+  def reset_session_token
+    self.session_token = generate_session_token
+    save
+    self.session_token
+  end
+
+  private
+
+  def generate_session_token
+    SecureRandom.urlsafe_base64(16)
+  end
 end

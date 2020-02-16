@@ -17,8 +17,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user
-      # render :show
-      render json: ['hello world']
+      render :show
     else
       render json: @user.errors.full_messages, status: 404
     end

@@ -19,6 +19,8 @@ class User < ApplicationRecord
   validates :name, :password_digest, presence: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
+  after_initialize :ensure_session_token
+
   has_many :created_lists,
            primary_key: :id,
            foreign_key: :owner_id,

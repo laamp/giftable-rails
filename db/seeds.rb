@@ -8,14 +8,40 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = { email: 'guest@giftable.com', name: 'Guest', password: 'password' }
-user1 = User.create(user1)
-user2 = { email: 'admin@giftable.com', name: 'Admin', password: 'password' }
-user2 = User.create(user2)
-user3 = { email: 'lance@giftable.com', name: 'Lance', password: 'password' }
-user3 = User.create(user3)
+# create users
+users = []
 
-list1 = { title: 'Guest List', owner_id: user1.id }
-list2 = { title: 'Xmas 2020', owner_id: user3.id }
-list3 = { title: 'Secret List', owner_id: user2.id }
-List.create([list1, list2, list3])
+20.times do
+  fake_name = Faker::Name.name
+
+  u = {
+    email: Faker::Internet.email(name: fake_name, domain: 'giftable.com'),
+    name: fake_name,
+    password: 'password'
+  }
+
+  users << User.create!(u)
+end
+
+# create lists
+lists = []
+
+50.times do
+  l = {
+    title: Faker::Lorem.sentence(word_count: 3),
+    owner_id: rand(1..20)
+  }
+
+  lists << List.create!(l)
+end
+
+# create gifts
+gifts = []
+
+200.times do
+  g = {
+
+  }
+
+  gifts << Gift.create!(g)
+end

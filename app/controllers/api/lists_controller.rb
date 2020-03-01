@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api
+module Api
   # List controller
   class ListsController < ApplicationController
     def index

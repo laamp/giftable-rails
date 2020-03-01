@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api
+module Api
   # User controller
   class UsersController < ApplicationController
     def create

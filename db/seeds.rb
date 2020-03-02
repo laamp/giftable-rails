@@ -8,10 +8,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# constants
+NUM_USERS = 20
+NUM_LISTS = 50
+NUM_GIFTS = 200
+
 # create users
 users = []
 
-20.times do
+NUM_USERS.times do
   fake_name = Faker::Name.name
 
   u = {
@@ -26,10 +31,10 @@ end
 # create lists
 lists = []
 
-50.times do
+NUM_LISTS.times do
   l = {
     title: Faker::Lorem.sentence(word_count: 3),
-    owner_id: rand(1..20)
+    owner_id: rand(1..NUM_USERS)
   }
 
   lists << List.create!(l)
@@ -38,10 +43,15 @@ end
 # create gifts
 gifts = []
 
-200.times do
+NUM_GIFTS.times do
   g = {
-
+    description: Faker::Music.album,
+    creator_id: rand(1..NUM_USERS),
+    recipient_id: rand(1..NUM_USERS),
+    list_id: rand(1..NUM_LISTS)
   }
 
   gifts << Gift.create!(g)
 end
+
+# users to lists

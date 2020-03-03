@@ -55,3 +55,8 @@ NUM_GIFTS.times do
 end
 
 # users to lists
+List.all.each do |l|
+  User.all.each do |u|
+    rand(2).zero? ? next : UsersToList.create(user_id: u.id, list_id: l.id)
+  end
+end

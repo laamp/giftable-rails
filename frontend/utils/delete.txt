@@ -1,2 +1,0 @@
-https://open.appacademy.io/learn/full-stack-in-person/react/todos--part-1-
-https://open.appacademy.io/learn/full-stack-in-person/react/webpack

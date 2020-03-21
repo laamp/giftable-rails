@@ -8,6 +8,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# guest user
+User.create({ email: 'guest@giftable.com', name: 'Guest', password: 'hunter12' })
+
 # constants
 NUM_USERS = 20
 NUM_LISTS = 50

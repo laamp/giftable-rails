@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
+# main controller for giftable application
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token, if: :json_request?
 
   helper_method :current_user, :logged_in?
+
+  def json_request?
+    request.format.json?
+  end
 
   def current_user
     return nil unless session[:session_token]
@@ -12,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!current_user
+    !current_user.nil?
   end
 
   def login(user)
@@ -28,8 +34,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    unless current_user
-      render json: { base: ['invalid credentials'] }, status: 401
-    end
+    return if current_user
+
+    render json: { base: ['invalid credentials'] }, status: 401
   end
 end

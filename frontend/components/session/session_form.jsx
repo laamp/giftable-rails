@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
 
     return (
       <>
-        <h2>{onSignUpForm ? 'Sign Up' : 'Log In'}</h2>
+        <h1>{onSignUpForm ? 'Sign Up' : 'Log In'}</h1>
 
         <form onSubmit={this.handleSubmit}>
           {onSignUpForm && (

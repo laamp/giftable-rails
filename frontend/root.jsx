@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import App from './app';
 
+// testing start
 import { logIn, logOut } from './actions/session';
+// testing end
 
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  # Session controller
+  # session controller
   class SessionsController < ApplicationController
     def create
       @user = User.find_by_credentials(

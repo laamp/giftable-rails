@@ -20,18 +20,18 @@ const receiveErrors = errors => ({
 
 export const signUp = user => dispatch =>
   APIUtilSession.signUp(user).then(
-    user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error))
+    user => dispatch(receiveCurrentUser(user.data)),
+    error => dispatch(receiveErrors(error.response.data))
   );
 
 export const logIn = user => dispatch =>
   APIUtilSession.logIn(user).then(
-    user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error))
+    user => dispatch(receiveCurrentUser(user.data)),
+    error => dispatch(receiveErrors(error.response.data))
   );
 
 export const logOut = () => dispatch =>
   APIUtilSession.logOut().then(
     () => dispatch(logOutCurrentUser()),
-    error => dispatch(receiveErrors(error))
+    error => dispatch(receiveErrors(error.response.data))
   );

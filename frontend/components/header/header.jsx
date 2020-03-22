@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   headerNav() {
@@ -8,7 +9,11 @@ class Header extends React.Component {
         <p onClick={this.props.logOut}>Log me out</p>
       </>
     ) : (
-      <p>Not logged in</p>
+      <>
+        <p>Not logged in</p>
+        <Link to='/signup'>Sign up</Link>
+        <Link to='/login'>Log in</Link>
+      </>
     );
   }
 

@@ -1,1 +1,13 @@
-$giftable-purple: purple;
+$all-colors: (
+  green: rgb(12, 54, 12),
+  purple: rgb(82, 20, 82)
+);
+
+@function color($color-name) {
+  $color-found: map-has-key($all-colors, $color-name);
+  @if ($color-found == true) {
+    @return map-get($all-colors, $color-name);
+  } @else {
+    @error "Color " + #{$color-name} + " doesn't exist.";
+  }
+}

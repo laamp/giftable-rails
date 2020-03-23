@@ -1,7 +1,7 @@
-@import 'frontend/styles/global';
+@import 'styles/global';
 
 header {
   h1 {
-    color: $giftable-purple;
+    color: color(purple);
   }
 }

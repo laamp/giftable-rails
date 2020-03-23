@@ -9,6 +9,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: ['frontend']
+              }
+            }
+          }
+        ]
+      },
+      {
         test: [/\.jsx?$/],
         exclude: /(node_modules)/,
         use: {
@@ -17,10 +32,6 @@ module.exports = {
             presets: ['@babel/env', '@babel/react']
           }
         }
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },

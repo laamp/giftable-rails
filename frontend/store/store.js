@@ -1,18 +1,31 @@
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import rootReducer from '../reducers/root';
+import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
+import createSagaMiddleware from "redux-saga";
+
+import rootReducer from "../reducers/root";
+import rootSagas from "../sagas/root";
 
 const configureStore = (preloadedState = {}) => {
-  if (process.env.NODE_ENV === 'production') {
-    return createStore(rootReducer, preloadedState, applyMiddleware(thunk));
-  } else {
-    return createStore(
+  const sagaMiddleware = createSagaMiddleware();
+
+  let store;
+  if (process.env.NODE_ENV === "production") {
+    store = createStore(
       rootReducer,
       preloadedState,
-      applyMiddleware(thunk, logger)
+      applyMiddleware(sagaMiddleware)
+    );
+  } else {
+    store = createStore(
+      rootReducer,
+      preloadedState,
+      applyMiddleware(sagaMiddleware, logger)
     );
   }
+
+  sagaMiddleware.run(rootSagas);
+
+  return store;
 };
 
 export default configureStore;

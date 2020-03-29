@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
-import createSagaMiddleware from "redux-saga";
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
-import rootReducer from "../reducers/root";
-import rootSagas from "../sagas/root";
+import rootReducer from '../reducers/root';
+import rootSagas from '../sagas/rootSaga';
 
 const configureStore = (preloadedState = {}) => {
   const sagaMiddleware = createSagaMiddleware();
 
   let store;
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     store = createStore(
       rootReducer,
       preloadedState,

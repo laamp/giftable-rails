@@ -1,10 +1,13 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import App from './app';
 
 // testing start
-import { logIn, logOut } from './actions/session';
+import { logInUser, logOutUser } from './actions/session';
 // testing end
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (process.env.NODE_ENV !== 'production') {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.logIn = logIn;
-    window.logOut = logOut;
+    window.logIn = logInUser;
+    window.logOut = logOutUser;
   }
   // testing end
 

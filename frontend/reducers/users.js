@@ -1,10 +1,14 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session';
+import {
+  CREATE_NEW_USER_SUCCESS,
+  LOG_IN_USER_SUCCESS
+} from '../actions/session';
 
 const usersReducer = (prevState = {}, action) => {
   Object.freeze(prevState);
 
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
+    case CREATE_NEW_USER_SUCCESS:
+    case LOG_IN_USER_SUCCESS:
       return Object.assign({}, prevState, {
         [action.currentUser.id]: action.currentUser
       });

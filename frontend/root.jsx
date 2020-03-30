@@ -7,7 +7,7 @@ import configureStore from './store/store';
 import App from './app';
 
 // testing start
-import { logInUser, logOutUser } from './actions/session';
+
 // testing end
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,13 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
+  window.theStore = store;
   // testing start
   if (process.env.NODE_ENV !== 'production') {
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.logIn = logInUser;
-    window.logOut = logOutUser;
   }
   // testing end
 

@@ -7,7 +7,7 @@ import configureStore from './store/store';
 import App from './app';
 
 // testing start
-
+import { getAllLists } from './utils/lists';
 // testing end
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.theStore = store;
   // testing start
   if (process.env.NODE_ENV !== 'production') {
+    window.getAllLists = getAllLists;
   }
   // testing end
 

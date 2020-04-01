@@ -12,13 +12,15 @@ class Header extends React.Component {
     ) : (
       <>
         <p>Not logged in</p>
-        <Link to='/signup'>Sign up</Link>
-        <Link to='/login'>Log in</Link>
+        <Link to="/signup">Sign up</Link>
+        <Link to="/login">Log in</Link>
       </>
     );
   }
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <header>
         <h1>Welcome to Giftable</h1>

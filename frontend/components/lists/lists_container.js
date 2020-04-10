@@ -3,12 +3,13 @@ import Lists from './lists';
 
 import { getAllLists } from '../../actions/lists';
 
-const mapStateToProps = ({ session: { id } }) => ({
-  currentUserId: id
+const mapStateToProps = ({ session: { id }, lists }) => ({
+  currentUserId: id,
+  lists,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getAllLists: id => dispatch(getAllLists(id))
+const mapDispatchToProps = (dispatch) => ({
+  getAllLists: (id) => dispatch(getAllLists(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lists);

@@ -5,7 +5,7 @@ const listsReducer = (prevState = {}, action) => {
 
   switch (action.type) {
     case GET_ALL_LISTS_SUCCESS:
-      return { lists: 'LISTS GO HERE' };
+      return action.lists;
     default:
       return prevState;
   }

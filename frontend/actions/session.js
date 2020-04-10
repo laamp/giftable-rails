@@ -1,37 +1,26 @@
-import * as APIUtilSession from '../utils/session';
-
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-
-const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
+export const CREATE_NEW_USER_REQUEST = 'CREATE_NEW_USER_REQUEST';
+export const CREATE_NEW_USER_SUCCESS = 'CREATE_NEW_USER_SUCCESS';
+export const createNewUser = user => ({
+  type: CREATE_NEW_USER_REQUEST,
+  payload: { user }
 });
 
-const logOutCurrentUser = () => ({
-  type: LOGOUT_CURRENT_USER
+export const LOG_IN_USER_REQUEST = 'LOG_IN_USER_REQUEST';
+export const LOG_IN_USER_SUCCESS = 'LOG_IN_USER_SUCCESS';
+export const logInUser = user => ({
+  type: LOG_IN_USER_REQUEST,
+  payload: { user }
 });
 
-const receiveErrors = errors => ({
-  type: RECEIVE_SESSION_ERRORS,
-  errors
+export const LOG_OUT_USER_REQUEST = 'LOG_OUT_USER_REQUEST';
+export const LOG_OUT_USER_SUCCESS = 'LOG_OUT_USER_SUCCESS';
+export const logOutUser = () => ({
+  type: LOG_OUT_USER_REQUEST
 });
 
-export const signUp = user => dispatch =>
-  APIUtilSession.signUp(user).then(
-    user => dispatch(receiveCurrentUser(user.data)),
-    error => dispatch(receiveErrors(error.response.data))
-  );
-
-export const logIn = user => dispatch =>
-  APIUtilSession.logIn(user).then(
-    user => dispatch(receiveCurrentUser(user.data)),
-    error => dispatch(receiveErrors(error.response.data))
-  );
-
-export const logOut = () => dispatch =>
-  APIUtilSession.logOut().then(
-    () => dispatch(logOutCurrentUser()),
-    error => dispatch(receiveErrors(error.response.data))
-  );
+export const SESSION_ERRORS_REQUEST = 'SESSION_ERRORS_REQUEST';
+export const SESSION_ERRORS_SUCCESS = 'SESSION_ERRORS_SUCCESS';
+export const sessionErrors = errors => ({
+  type: SESSION_ERRORS_REQUEST,
+  payload: { errors }
+});

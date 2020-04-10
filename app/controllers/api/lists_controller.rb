@@ -4,7 +4,7 @@ module Api
   # List controller
   class ListsController < ApplicationController
     def index
-      if current_user.id == params[:user_id]
+      if current_user.id == params[:user_id].to_i
         @lists = current_user.lists
 
         render :index

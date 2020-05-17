@@ -8,24 +8,19 @@ class Lists extends React.Component {
 
   componentDidMount() {
     this.props.getAllLists(this.props.currentUserId);
-    console.log(this.props.lists);
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log(prevProps, this.props);
   }
 
   render() {
     const { lists } = this.props;
-    window.lists = lists;
+    const listKeys = Object.keys(lists);
 
     return (
       <>
         <h1>Lists Component</h1>
         <ul>
-          {this.props.lists &&
-            this.props.lists.map((list, idx) => (
-              <li key={`list-${idx}`}>{list.name}</li>
+          {listKeys &&
+            listKeys.map((list, idx) => (
+              <li key={`list-${idx}`}>{lists[list].title}</li>
             ))}
         </ul>
       </>

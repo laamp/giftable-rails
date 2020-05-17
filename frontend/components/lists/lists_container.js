@@ -3,7 +3,7 @@ import Lists from './lists';
 
 import { getAllLists } from '../../actions/lists';
 
-const mapStateToProps = ({ session: { id }, lists }) => ({
+const mapStateToProps = ({ session: { id }, entities: { lists } }) => ({
   currentUserId: id,
   lists,
 });

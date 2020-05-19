@@ -4,7 +4,7 @@ module.exports = {
   entry: './frontend/root.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -17,11 +17,11 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sassOptions: {
-                includePaths: ['frontend']
-              }
-            }
-          }
-        ]
+                includePaths: ['frontend'],
+              },
+            },
+          },
+        ],
       },
       {
         test: [/\.jsx?$/],
@@ -29,14 +29,20 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react']
-          }
-        }
-      }
-    ]
+            presets: [
+              '@babel/env',
+              '@babel/react',
+              {
+                plugins: ['@babel/plugin-proposal-class-properties'],
+              },
+            ],
+          },
+        },
+      },
+    ],
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '.scss', '*']
-  }
+    extensions: ['.js', '.jsx', '.scss', '*'],
+  },
 };

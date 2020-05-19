@@ -2,42 +2,32 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      password: ''
-    };
+  state = {
+    name: '',
+    email: '',
+    password: '',
+  };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  update = field => e =>
+    this.setState({
+      [field]: e.currentTarget.value,
+    });
 
-  update(field) {
-    return e =>
-      this.setState({
-        [field]: e.currentTarget.value
-      });
-  }
-
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
 
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-  }
+  };
 
-  renderErrors(errors) {
-    return (
-      Boolean(errors.length) && (
-        <ul>
-          {errors.map((err, idx) => (
-            <li key={`error-${idx}`}>{err}</li>
-          ))}
-        </ul>
-      )
+  renderErrors = errors =>
+    Boolean(errors.length) && (
+      <ul>
+        {errors.map((err, idx) => (
+          <li key={`error-${idx}`}>{err}</li>
+        ))}
+      </ul>
     );
-  }
 
   render() {
     const { formType, errors } = this.props;

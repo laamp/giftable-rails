@@ -1,7 +1,7 @@
 import {
   SESSION_ERRORS_SUCCESS,
   CREATE_NEW_USER_SUCCESS,
-  LOG_IN_USER_SUCCESS
+  LOG_IN_USER_SUCCESS,
 } from '../actions/session';
 
 const sessionErrorsReducer = (prevState = [], action) => {

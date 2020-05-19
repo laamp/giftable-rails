@@ -1,7 +1,7 @@
 import {
   CREATE_NEW_USER_SUCCESS,
   LOG_IN_USER_SUCCESS,
-  LOG_OUT_USER_SUCCESS
+  LOG_OUT_USER_SUCCESS,
 } from '../actions/session';
 
 const noUser = Object.freeze({ id: null });

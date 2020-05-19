@@ -44,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/laamp/giftable-rails/issues"
   },
-  "homepage": "https://github.com/laamp/giftable-rails#readme"
+  "homepage": "https://github.com/laamp/giftable-rails#readme",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3"
+  }
 }

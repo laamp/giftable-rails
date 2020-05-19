@@ -8,7 +8,7 @@ function* signUpNewUser(action) {
     const response = yield call(signUp, action.payload.user);
     yield put({
       type: sessionActions.CREATE_NEW_USER_SUCCESS,
-      currentUser: response.data
+      currentUser: response.data,
     });
   } catch (err) {
     yield put(sessionActions.sessionErrors(err));
@@ -20,7 +20,7 @@ function* logInUser(action) {
     const response = yield call(logIn, action.payload.user);
     yield put({
       type: sessionActions.LOG_IN_USER_SUCCESS,
-      currentUser: response.data
+      currentUser: response.data,
     });
   } catch (err) {
     yield put(sessionActions.sessionErrors(err));
@@ -39,7 +39,7 @@ function* logOutUser() {
 function* sessionError(action) {
   yield put({
     type: sessionActions.SESSION_ERRORS_SUCCESS,
-    errors: action.payload.errors.response.data
+    errors: action.payload.errors.response.data,
   });
 }
 

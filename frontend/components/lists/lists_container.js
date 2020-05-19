@@ -8,8 +8,8 @@ const mapStateToProps = ({ session: { id }, entities: { lists } }) => ({
   lists,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getAllLists: (id) => dispatch(getAllLists(id)),
+const mapDispatchToProps = dispatch => ({
+  getAllLists: id => dispatch(getAllLists(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lists);

@@ -1,33 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style';
+import './header';
 
-class Header extends React.Component {
-  headerNav() {
-    return this.props.currentUser ? (
+const Header = ({ currentUser, logOut }) => {
+  const headerNav = () =>
+    currentUser ? (
       <>
         <p>Logged in</p>
-        <p onClick={this.props.logOut}>Log me out</p>
+        <p onClick={logOut}>Log me out</p>
       </>
     ) : (
       <>
         <p>Not logged in</p>
-        <Link to="/signup">Sign up</Link>
-        <Link to="/login">Log in</Link>
+        <Link to='/signup'>Sign up</Link>
+        <Link to='/login'>Log in</Link>
       </>
     );
-  }
 
-  render() {
-    const { currentUser } = this.props;
-
-    return (
-      <header>
-        <h1>Welcome to Giftable</h1>
-        {this.headerNav()}
-      </header>
-    );
-  }
-}
+  return (
+    <header>
+      <h1>Welcome to Giftable</h1>
+      {headerNav()}
+    </header>
+  );
+};
 
 export default Header;

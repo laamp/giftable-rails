@@ -2,6 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Lists extends React.Component {
+  state = {
+    showNewListForm: false,
+  };
+
   componentDidMount() {
     this.props.getAllLists(this.props.currentUserId);
   }
@@ -9,6 +13,8 @@ class Lists extends React.Component {
   render() {
     const { lists } = this.props;
     const listKeys = Object.keys(lists);
+
+    const newListForm = this.state.showNewListForm && <div>New List Form</div>;
 
     return (
       <>
@@ -19,6 +25,11 @@ class Lists extends React.Component {
               <li key={`list-${idx}`}>{lists[list].title}</li>
             ))}
         </ul>
+        {this.asdf}
+        <button onClick={() => this.setState({ showNewListForm: true })}>
+          + Make a new list
+        </button>
+        {newListForm}
       </>
     );
   }

@@ -18,6 +18,8 @@ module Api
       @list.owner_id = params[:user_id].to_i
 
       if @list.save
+        UsersToList.create(user_id: @list.owner_id, list_id: @list.id)
+
         render :show
       else
         render @list.errors.full_messages, status: 422

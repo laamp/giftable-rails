@@ -11,5 +11,6 @@ export default function* rootSaga() {
     sessionSagas.watchSessionError(),
     listSagas.watchGetAllLists(),
     listSagas.watchListErrors(),
+    listSagas.watchCreateNewList(),
   ]);
 }

@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import * as listActions from '../actions/lists';
-import { getAllLists } from '../utils/lists';
+import { getAllLists, createList } from '../utils/lists';
 
 function* fetchAllLists(action) {
   try {
@@ -22,10 +22,27 @@ function* listErrors(action) {
   });
 }
 
+function* createNewList(action) {
+  try {
+    const { id, list } = action.payload;
+    const response = yield call(createList, id, list);
+    yield put({
+      type: listActions.CREATE_NEW_LIST_SUCCESS,
+      list: response.data,
+    });
+  } catch (err) {
+    yield put(listActions.listErrors(err));
+  }
+}
+
 export function* watchGetAllLists() {
   yield takeEvery(listActions.GET_ALL_LISTS_REQUEST, fetchAllLists);
 }
 
 export function* watchListErrors() {
   yield takeEvery(listActions.LIST_ERRORS_REQUEST, listErrors);
+}
+
+export function* watchCreateNewList() {
+  yield takeEvery(listActions.CREATE_NEW_LIST_REQUEST, createNewList);
 }

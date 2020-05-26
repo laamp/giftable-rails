@@ -8,19 +8,19 @@ class SessionForm extends React.Component {
     password: '',
   };
 
-  update = field => e =>
+  update = (field) => (e) =>
     this.setState({
       [field]: e.currentTarget.value,
     });
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   };
 
-  renderErrors = errors =>
+  renderErrors = (errors) =>
     Boolean(errors.length) && (
       <ul>
         {errors.map((err, idx) => (

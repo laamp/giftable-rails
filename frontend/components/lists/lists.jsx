@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import NewListContainer from '../new_list/new_list_container';
+
 class Lists extends React.Component {
   state = {
     showNewListForm: false,
@@ -14,7 +16,7 @@ class Lists extends React.Component {
     const { lists } = this.props;
     const listKeys = Object.keys(lists);
 
-    const newListForm = this.state.showNewListForm && <div>New List Form</div>;
+    const newListForm = this.state.showNewListForm && <NewListContainer />;
 
     return (
       <>
